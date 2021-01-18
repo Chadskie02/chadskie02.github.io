@@ -1,0 +1,13 @@
+.up-arrow {
+    position: fixed; 
+    transition: background-color 0.2s ease-in-out; 
+    background: #737373;
+    color: #ffffff !important;
+    border-radius: 3px; 
+    padding-left: 15px; 
+    padding-right: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    right: 20px;
+    bottom: 100px;    
+}

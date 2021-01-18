@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/logo-bns-white.svg" />
+    <title>BNS</title>
+        <!-- Custom Carousel CSS -->
+        <link href="css/custom-carousel.css" rel="stylesheet">        
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="css/metisMenu.min.css" rel="stylesheet">
+
+        <!-- Timeline CSS -->
+        <link href="css/timeline.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/startmin.css" rel="stylesheet">
+
+        <!-- Morris Charts CSS -->
+        <link href="css/morris.css" rel="stylesheet">
+
+        <!-- Other CSS -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/footer.css" rel="stylesheet">  
+        <link href="css/top.css" rel="stylesheet">  
+        <link href="css/mobile.css" rel="stylesheet">  
+
+        <!-- Custom Fonts -->
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
+
+        <!-- Owl Stylesheets -->
+        <!-- <link rel="stylesheet" href="assets/css/docs.theme.min.css"> -->
+        <link rel="stylesheet" href="assets/owlcarousel/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="assets/owlcarousel/assets/owl.theme.default.min.css">
+        <!-- javascript -->
+        <script src="assets/vendors/jquery.min.js"></script>
+        <script src="assets/owlcarousel/owl.carousel.js"></script>    
+            <!-- vendors -->
+        <script src="assets/vendors/highlight.js"></script>
+        <script src="assets/js/app.js"></script>
+
+        <style>
+            .cover img {
+            position: relative;
+            filter: drop-shadow(0px 5px 3px black);
+            animation: drop 1.5s ease;
+            -webkit-transition: all 0.5s ease;
+            }
+            @keyframes drop{
+                0% {
+                    opacity: 0;
+                    transform: translateY(-80px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+            }            
+        </style>
+
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="#myPage">
+            <img src="./images/logo-bns-white.svg" alt="logo" class="img-responsive" width="60" height="50">
+          </a>
+        </div>
+        <div class="hidden-lg hidden-md">
+          <div class="collapse navbar-collapse" id="myNavbar">  
+            <ul class="nav navbar-nav navbar-left">
+              <li><a href="#myPage">HOME</a></li>
+              <li><a href="#featured">PRODUCTS</a></li>
+              <li><a href="#contact">CONTACT US</a></li>        
+              <li><a href="#about">ABOUT US</a></li> 
+              <li><a href="#">REGISTER</a></li>  
+              <li><a href="#">LOGIN</a></li>      
+              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>        
+            </ul>
+          </div>
+        </div>
+        
+        <div class="hidden-sm hidden-xs">
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-left">
+              <li><a href="/bns/#myPage">HOME</a></li>
+              <li><a href="/bns/#featured">PRODUCTS</a></li>
+              <li><a href="/bns/#contact">CONTACT US</a></li>        
+              <li><a href="/bns/#about">ABOUT US</a></li> 
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/bns/register">REGISTER</a></li>  
+              <li><a href="/bns/login">LOGIN</a></li>      
+              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+            </ul>
+          </div>
+          </div>
+        </div> 
+    
+        
+    
+      </div>  
+      <div class="container-fluid" style="padding:0px;">
+        <div class="nav-bottom">
+              <form class="form-inline" action="#">
+                <div class="form-group">
+                      <select class="form-control">
+                        <option>All Categories</option>
+                        <option>Appliances</option>
+                        <option>Clothes</option>
+                        <option>Furniture</option>
+                        <option>Gadgets</option>
+                        <option>Pets</option>
+                        <option>Property</option>
+                        <option>Services</option>
+                        <option>Transportation</option>
+                      </select>
+                  </div>           
+                  <div class="input-group custom-search-form">                                                             
+                    <input type="text" class="form-control" placeholder="Search Items">    
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                    </span>               
+                  </div>               
+              </form> 
+        </div>
+      </div>
+    </nav>
+<div class="container-fluid" style="padding-top:150px;">
+    <div class="col-lg-6">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="images/banner1.jpg" alt="Banner 1" width="1200" height="700">
+            <div class="carousel-caption">
+            <h3>Nike</h3>
+            <p>Take Control</p>
+            </div>      
+        </div>
+
+        <div class="item">
+            <img src="images/banner2.jpg" alt="Banner 2" width="1200" height="700">
+            <div class="carousel-caption">
+            <h3>Reebok</h3>
+            <p>Win in any conditions</p>
+            </div>      
+        </div>
+        
+        <div class="item">
+            <img src="images/banner3.jpg" alt="Banner 3" width="1200" height="700">
+            <div class="carousel-caption">
+            <h3>Adidas</h3>
+            <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
+            </div>      
+        </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+        </a>
+    </div>
+    </div>
+    <div class="col-lg-6">
+    <img class="big-circle" src="./images/big-eclipse.svg" alt="image-eclipse-big" class="img-responsive" width="300" height="300">
+    <img class="medium-circle" src="./images/mid-eclipse.svg" alt="image-eclipse-mid" class="img-responsive" width="300" height="300">
+    <img class="small-circle" src="./images/small-eclipse.svg" alt="image-eclipse-small" class="img-responsive" width="300" height="300">
+    <h1 class="text-center">Laptop for the future</h1>
+    <hr class="line">
+      <div class="cover">
+        <img src="images/matebook.png" class="img-responsive center" width="300" height="300">
+      </div>    
+        <p class="text-center">The new 14 inch bezeless display oferring a 4k display with touch screen.</p>
+    </div>  
+
+</div>
+
+<div class="page-content page-container">
+    <div class="padding">
+        <div class="row container-fluid">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                      <section id="demos">
+                        <p class="pad"></p>
+                        <h3 class="align-center">Explore Carousell</h3>
+                        <hr class="line">
+                        </br>
+                        <div class="owl-carousel owl-theme">
+                        <div class="item"> <img src="images/icon/property.svg" alt="image" /> </div>                        
+                            <div class="item"> <img src="images/icon/car.svg" alt="image" /> </div>
+                            <div class="item"> <img src="images/icon/gadget.svg" alt="image" /> </div>
+                            <div class="item"> <img src="images/icon/clothing.svg" alt="image" /> </div>
+                            <div class="item"> <img src="images/icon/pets.svg" alt="image" /> </div>
+                            <div class="item"> <img src="images/icon/appliances.svg" alt="image" /> </div>
+                            <div class="item"> <img src="images/icon/furniture.svg" alt="image" /> </div>
+                            <div class="item"> <img src="images/icon/services.svg" alt="image" /> </div>
+                        </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>      
+
+<!-- Container (Featured Items Section) -->
+<div id="featured" class="container text-center">
+  <h3>Featured Items</h3>
+  <hr class="line">
+  </br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Adidas Bounce Titan</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="images/featured/1.png" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>Basketball</p>
+        <p>₱ 9000</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Nike Hypervenom Neymar Jr.</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="images/featured/2.png" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>Football</p>
+        <p>₱ 12000</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Flyknit 360</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="images/featured/3.png" class="img-circle person" alt="Random Name" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>Running</p>
+        <p>₱ 8000</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="box"></div>
+<!-- Container (ORDER Section) -->
+<div class="bg-1">
+  <div class="container">
+    <h3 class="text-center">Fresh Finds!</h3>
+    <hr class="line">    
+    <div class="row text-center">
+      <div class="col-sm-4">
+      <button type="button" class="btn-2">
+        <div class="thumbnail pad">     
+          <h5 class="text-left"><i class="fa fa-user fa-fw user-border"></i> justine09</h5>     
+          <img src="images/products/Adidas-Adizero-Black.png" alt="Paris" class="img-responsive" width="400px" height="300px">
+          <p class="text-center"><strong>Adidas Adizero Black</strong></p>
+          <hr class="line">
+          <p class="text-left">₱ 18000</p> 
+          <p class="text-left description">Swap for gold/silver</p> 
+          <p class="text-left">Used</p> 
+          <p class="text-left"><i class="fa fa-fw" aria-hidden="true" title="Copy to use heart-o"></i>  2 hours ago</p>    
+        </div>
+      </button>   
+      </div>
+      <div class="col-sm-4">
+      <button type="button" class="btn-2">
+        <div class="thumbnail pad">
+          <h5 class="text-left"><i class="fa fa-user fa-fw user-border"></i> arlynlyn14</h5>
+          <img src="images/products/Lebron-11-Red.png" alt="New York" class="img-responsive" width="400px" height="300px">
+          <p class="text-center"><strong>Lebron 11 Red</strong></p>
+          <hr class="line">
+          <p class="text-left">₱ 18000</p>  
+          <p class="text-left description">brandnew and sealed</p> 
+          <p class="text-left">Used</p>    
+          <p class="text-left"><i class="fa fa-fw" aria-hidden="true" title="Copy to use heart-o"></i> 4 hours ago</p>  
+        </div> 
+      </button>      
+      </div>
+      <div class="col-sm-4">
+      <button type="button" class="btn-2">
+        <div class="thumbnail pad">
+          <h5 class="text-left"><i class="fa fa-user fa-fw user-border"></i> chadskie02</h5>
+          <img src="images/products/Nike-Air-Max-Green.png" alt="San Francisco" class="img-responsive" width="400px" height="300px">
+          <p class="text-center"><strong>Nike Air Max Green</strong></p>
+          <hr class="line">
+          <p class="text-left">₱ 12000</p>
+          <p class="text-left description">Cod metro manila</p> 
+          <p class="text-left">New</p>
+          <p class="text-left"><i class="fa fa-fw" aria-hidden="true" title="Copy to use heart-o"></i> 3 hours ago</p>
+        </div>  
+      </button>        
+      </div>
+      <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>       
+    </div>
+   
+  </div>
+</div>
+
+<!-- Container (Contact Section) -->
+
+<div class="container">
+  <h3 class="text-center" id="contact">Contact Us</h3>
+  <hr class="line">
+  <div class="row">
+    <div class="col-md-4">
+      <p><span class="glyphicon glyphicon-map-marker"></span> Malabon, PH</p>
+      <p><span class="glyphicon glyphicon-phone"></span> Phone: +639217229031</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> Email: chadskie@gmail.com</p>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+      <br>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <button class="btn pull-right" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">  
+  <h3 class="text-center" id="about">About Us</h3>  
+  <hr class="line">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Mission</a></li>
+    <li><a data-toggle="tab" href="#menu1">Vision</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h2>Mission</h2>
+      <p>To provide a high quality footwear that suit the athletes style and to be one of the leading sports footwear apparel in the country.</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h2>Vision</h2>
+      <p>BNS, the company that inspire, motivate, and give determination to the sports enthusiast.</p>
+    </div>
+  </div>
+</div>
+<!-- Image of location/map -->
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d964.9749416934307!2d120.96905382915529!3d14.661629296795478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b43727beec35%3A0x699db22357fd42f3!2s29%20Marcelo%20H.%20Del%20Pilar%20St%2C%20Malabon%2C%201475%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1605818541058!5m2!1sen!2sph" width="100%" height="450" frameborder="0" style="border:0; margin-bottom:-7px; padding-top:27px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+</body>
+<!-- Site footer -->
+<footer class="site-footer">
+      <div class="container-fluid">
+        <div class="row"> 
+          <div class="col-sm-12 col-md-6 align-center">
+            <a href="https://www.facebook.com/chadskie02/" target="_blank"><img src="./images/logo-bns-white.svg" alt="logo" class="img-responsive" width="300" height="300"></a>
+            <div class="hidden-lg hidden-md hidden-sm">
+            <p>Buy N Sell</p>
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-md-3 align-center">
+            <h6>Categories</h6>
+            <ul class="footer-links">
+              <li><a href="#">Appliances</a></li>
+              <li><a href="#">Baby Stuff</a></li>
+              <li><a href="#">Clothes</a></li>
+              <li><a href="#">Furniture</a></li>
+              <li><a href="#">Gadgets</a></li>
+              <li><a href="#">Pets</a></li>
+              <li><a href="#">Real State</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Transportation</a></li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3 align-center">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#featured">Products</a></li>
+              <li><a href="#">Contribute</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-md-8 col-sm-6 col-xs-12">         
+            <p class="copyright-text">Copyright © 2021 All Rights Reserved by 
+            <a href="#" data-toggle="tooltip" title="Visit BuyNSell.com">BNS</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+            </ul>
+          </div>
+          <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP" style="">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+          </a><br><br> 
+        </div>
+
+      </div>
+</footer>
+        <!-- jQuery -->
+        <!-- <script src="js/jquery.min.js"></script> -->
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="js/metisMenu.min.js"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script src="js/raphael.min.js"></script>
+        <script src="js/morris.min.js"></script>
+        <script src="js/morris-data.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="js/startmin.js"></script>
+        <script>
+            $(document).ready(function() {
+              $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                autoplay:true,
+                autoplayTimeout:2000,
+                autoplayHoverPause:true,
+                responsiveClass: true,
+                responsive: {
+                  0: {
+                    items: 1,
+                    nav: true
+                  },
+                  600: {
+                    items: 3,
+                    nav: false
+                  },
+                  1000: {
+                    items: 5,
+                    nav: true,
+                    loop: false,
+                    margin: 20
+                  }
+                }
+              })
+            })  
+
+            $(document).ready(function()
+            {
+
+
+            if($('.bbb_viewed_slider').length)
+            {
+            var viewedSlider = $('.bbb_viewed_slider');
+
+            viewedSlider.owlCarousel(
+            {
+            loop:true,
+            margin:30,
+            autoplay:true,
+            autoplayTimeout:6000,
+            nav:false,
+            dots:false,
+            responsive:
+            {
+            0:{items:1},
+            575:{items:2},
+            768:{items:3},
+            991:{items:4},
+            1199:{items:6}
+            }
+            });
+
+            if($('.bbb_viewed_prev').length)
+            {
+            var prev = $('.bbb_viewed_prev');
+            prev.on('click', function()
+            {
+            viewedSlider.trigger('prev.owl.carousel');
+            });
+            }
+
+            if($('.bbb_viewed_next').length)
+            {
+            var next = $('.bbb_viewed_next');
+            next.on('click', function()
+            {
+            viewedSlider.trigger('next.owl.carousel');
+            });
+            }
+            }
+            });
+    </script>
+
+</html>

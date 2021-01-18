@@ -1,0 +1,42 @@
+@media (max-width:991.98px) {
+    .padding {
+        padding: 1.5rem
+    }
+  }
+  
+  @media (max-width:767.98px) {
+    .padding {
+        padding: 1rem
+    }
+  }
+  
+  .padding {
+    padding: 3rem
+  }
+  
+  .owl-carousel .item {
+    margin: 3px
+  }
+  
+  .owl-carousel .item img {
+    display: block;
+    width: 60% !important;
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  .owl-carousel .item {
+    margin: 3px
+  }
+  
+  .owl-carousel {
+    margin-bottom: 15px
+  }
+  #demos {
+    box-shadow: 0 3px 10px 0 rgba(44,44,45,.07), inset 0 0 0 1px rgba(44,44,45,.07);
+  }
+  /* #demos .owl-carousel .item {
+    height: 15rem;
+    background: #4DC7A0;
+    padding: 1.4rem;
+    } */

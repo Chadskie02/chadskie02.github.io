@@ -1,0 +1,41 @@
+@media screen and (max-width: 767px) {
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color: #ff5e00 !important;
+    margin-top: 0px;
+    margin-left: 40px;
+}
+.navbar li a, .navbar .navbar-brand { 
+    color: #d5d5d5 !important;
+    margin-top: 0px;
+    margin-left: 25px;    
+}
+.align-center {
+    text-align:center;
+    margin:0 auto;
+}
+.img-responsive {
+    margin:0 auto;
+}
+.navbar-toggle{
+    float: right !important;
+}
+.navbar-brand {
+    float: right;
+    height: 50px;
+    padding: 10px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+}
+@media screen and (max-width: 352px) {
+body{
+    width:374px;
+}
+}
+
+@media screen and (max-width: 813px) and (min-width: 768px) {
+.navbar {
+    letter-spacing: 2px;
+}
+}
