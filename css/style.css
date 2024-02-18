@@ -103,14 +103,13 @@ body {
     margin: 2.5px 0;
 }
 
-/* Media query for mobile view */
 @media only screen and (max-width: 768px) {
     .navbar {
         display: none;
         flex-direction: column;
         align-items: center;
         position: absolute;
-        top: 70px; /* Adjust as needed */
+        top: 70px;
         left: 0;
         width: 100%;
         height: 60vh;
@@ -147,14 +146,12 @@ body {
     display: flex;
     align-items: center;
     padding: 0 10%;
-    /* margin-top: 100px; */
 }
 
-/* Media query for screens smaller than 768px (adjust the value as needed) */
 @media only screen and (max-width: 768px) {
     .home {
         height: 100vh;
-        padding: 0 10%; /* Override padding for smaller screens */
+        padding: 0 10%;
     }
 }
 
@@ -166,6 +163,12 @@ body {
     font-size: 56px;
     font-weight: 700;
     color: #fff;
+}
+
+@media only screen and (max-width: 400px) {
+    .home-content h1 {
+        font-size: 42px;
+    }
 }
 
 .home-content h3 {
@@ -185,6 +188,22 @@ body {
     width: 355px;
     height: 50px;
     margin-top: 20px;
+}
+
+@media only screen and (max-width: 400px) {
+    .home-content {
+        max-width: 100%;
+    }
+
+    .home-content .btn-box{
+        width: 100%;
+    }
+
+    .home-content .btn-box a{
+        width: 100%;
+        margin: 0px 10px 0px 0px;
+        font-size: 10px;
+    }
 }
 
 .btn-box a {
@@ -322,14 +341,6 @@ body {
     color: #fff;
 }
 
-/* .card li {
-    font-size: 10px;
-    color: #fff;
-    list-style-type: none;
-    padding: 0;
-    margin: 10px 0;
-} */
-
 @media screen and (max-width: 768px) {
     .card {
         width: 100%;
@@ -337,6 +348,11 @@ body {
     }
 }
 
+@media screen and (max-width: 400px) {
+    .card {
+        height: 40vh;
+    }
+}
 
 /* Portfolio */
 
@@ -366,8 +382,8 @@ body {
 /* Skills */
 
 .skills {
-    height: 30vh;
-    padding: 40px 10%;
+    height: auto;
+    padding: 40px 0%;
     background: #fff;
 }
 
@@ -383,46 +399,47 @@ body {
     color: #2c3b57;
 }
 
-.skills ul {
+.skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 3rem;
-    list-style: none;
+    justify-content: center;
+    padding: 20px;
 }
 
-.skills ul li {
-    cursor: pointer;
-}
-
-/* Media query for screens smaller than 768px (adjust the value as needed) */
-@media only screen and (max-width: 1181px) {
-    .skills {
-        height: 55vh;
-
+.skills-content {
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .logos img {
+    width: 100px;
+    height: auto;
+    margin: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .logos img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .logos img {
+      width: 80px;
     }
 }
-
-@media only screen and (max-width: 768px) {
-    .skills {
-        height: 50vh;
-
-    }
-}
-
-@media only screen and (max-width: 420px) {
-    .skills {
-        height: 100vh;
-
-    }
-}
-
 
 /* Skills */
 .contact {
-    height: auto; /* Remove fixed height */
+    height: auto;
     padding: 20px 10%;
     background: #fff;
-    text-align: center; /* Center the content */
+    text-align: center;
 }
 
 .contact h1{
@@ -432,8 +449,8 @@ body {
 }
 
 .contact-content {
-    max-width: 1200px; /* Set a maximum width for better readability on larger screens */
-    margin: 0 auto; /* Center the container */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .contact-icon-box {
@@ -486,16 +503,16 @@ body {
 /* Adjustments for smaller screens */
 @media only screen and (max-width: 768px) {
     .contact {
-        padding: 40px 5%; /* Decrease the padding for smaller screens */
+        padding: 40px 5%;
     }
 
     .contact-icons {
-        flex-direction: column; /* Stack the icons on top of each other */
+        flex-direction: column;
         align-items: center;
     }
 
     .contact-icon-box {
-        margin: 10px 0; /* Adjust spacing for smaller screens */
+        margin: 10px 0;
     }
 }
 
