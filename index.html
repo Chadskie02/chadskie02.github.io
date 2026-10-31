@@ -1,354 +1,655 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image" content="img/Logo.png">
-    <title>RS Portfolio</title>
-    <link rel="shortcut icon" href="img/Logo.png" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chad — Frontend Web Developer</title>
+<meta name="description" content="Frontend web developer building fast, responsive, mobile-ready websites and web apps." />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0b0b0f;
+    --panel: #12121a;
+    --line: rgba(255, 255, 255, 0.15);
+    --text: #ececf1;
+    --muted: #9a9aa8;
+    --accent: #bbff00d3;
+    --accent-soft: #2a2350;
+    --mono: "SF Mono", ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+    --sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --max: 1120px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    background-color: #2c3b57;
+    background-image:
+      linear-gradient(rgb(44 59 87 / 98%) 100%, rgb(44 59 87 / 100%) 100%),
+      url("img/html-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+  ::selection { background: var(--accent); color: #fff; }
 
-    <!-- Swiper CSS -->
-    <link href="css/swiper.min.css" rel="stylesheet" />
-    
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
+  .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  .mono { font-family: var(--mono); }
+  .muted { color: var(--muted); }
+  .accent { color: var(--accent); }
 
-    <!-- Aos Min CSS -->
-    <link href="css/aos.min.css" rel="stylesheet" />
-    
+  /* ============ NAV ============ */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    backdrop-filter: blur(12px);
+    background: rgba(11, 11, 15, .72);
+    border-bottom: 1px solid var(--line);
+  }
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .brand { font-weight: 700; letter-spacing: -.02em; }
+  .brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; font-size: .9rem; }
+  .nav-links a { color: var(--muted); transition: color .2s; }
+  .nav-links a:hover { color: var(--text); }
+  .cta {
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 18px; font-size: .85rem; transition: .2s;
+  }
+  .cta:hover { border-color: var(--accent); color: var(--accent); }
+  @media (max-width: 760px) { .nav-links { display: none; } }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 140px 0 100px;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative;
+  }
+  .hero-inner { width: 100%; }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: .8rem; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 14px; margin-bottom: 28px;
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: #3ddc84; }
+  .hero h1 {
+    font-size: clamp(2.6rem, 7vw, 5.2rem);
+    line-height: 1.02; letter-spacing: -.045em; font-weight: 800;
+    max-width: 14ch;
+    will-change: transform;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p.lead {
+    margin-top: 28px; max-width: 58ch; font-size: 1.12rem; color: var(--muted);
+  }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+  .btn {
+    display: inline-block; padding: 13px 26px; border-radius: 999px;
+    font-weight: 600; font-size: .95rem; transition: .2s;
+    cursor: pointer; background: none; border: none;
+    font-family: inherit; color: inherit;
+  }
+  .btn-primary { background: var(--accent); color: #0b0b0f; }
+  .btn-primary:hover { filter: brightness(1.12); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 48px; }
+  .tag {
+    font-family: var(--mono); font-size: .78rem; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px;
+  }
+
+  /* ============ SECTION ============ */
+  section { padding: 90px 0; border-top: 1px solid var(--line); position: relative; }
+  .chapter {
+    font-family: var(--mono); font-size: .8rem; color: var(--accent);
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px;
+  }
+  h2 {
+    font-size: clamp(1.9rem, 4.2vw, 3rem);
+    letter-spacing: -.035em; line-height: 1.08; font-weight: 800;
+    max-width: 20ch;
+  }
+  .section-lead { margin-top: 18px; max-width: 60ch; color: var(--muted); font-size: 1.05rem; }
+
+  /* ============ WHAT I DO ============ */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 48px; }
+  @media (max-width: 900px) { .cards { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 16px; padding: 26px; transition: border-color .25s, transform .25s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .card h3 { font-size: 1.15rem; margin-bottom: 10px; letter-spacing: -.02em; }
+  .card p { color: var(--muted); font-size: .93rem; }
+  .card .tag { margin-top: 18px; display: inline-block; }
+
+  /* ============ WORK ============ */
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 48px; }
+  @media (max-width: 780px) { .work-grid { grid-template-columns: 1fr; } }
+  .work {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 16px; padding: 26px; transition: border-color .25s, transform .25s;
+    display: flex; flex-direction: column; gap: 14px;
+    position: relative;
+  }
+  .work:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .work-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .work h3 { font-size: 1.2rem; letter-spacing: -.02em; }
+  .work .num { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
+  .work p { color: var(--muted); font-size: .93rem; flex: 1; }
+  .work .chips { margin-top: 4px; }
+  .work .chips .tag { font-size: .7rem; padding: 4px 9px; }
+
+  /* Thumbnail frame */
+  .work-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #0d0d14;
+    border: 1px solid var(--line);
+    margin-bottom: 4px;
+  }
+  .work-thumb .img-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform .4s ease;
+  }
+  .work:hover .work-thumb .img-thumbnail { transform: scale(1.05); }
+
+  /* Hidden work cards */
+  .hidden-work { display: none; }
+  .work-grid.expanded .hidden-work { display: flex; }
+
+  .work-grid.expanded .hidden-work:nth-child(7),
+  .work-grid.expanded .hidden-work:nth-child(8),
+  .work-grid.expanded .hidden-work:nth-child(9)  {
+    margin-top: 40px; 
+  }
+
+  /* "See more" button wrapper */
+  .work-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+  }
+  .work-more .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .work-more .arrow {
+    font-family: var(--mono);
+    transition: transform .25s ease;
+  }
+  .work-more .btn[aria-expanded="true"] .arrow {
+    transform: rotate(180deg);
+  }
+
+  /* ============ ABOUT ============ */
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; margin-top: 40px; }
+  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-grid p { color: var(--muted); margin-bottom: 16px; }
+  .fact-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .fact {
+    display: flex; justify-content: space-between; gap: 20px;
+    padding: 14px 0; border-bottom: 1px solid var(--line); font-size: .92rem;
+  }
+  .fact span:first-child { color: var(--muted); font-family: var(--mono); font-size: .8rem; }
+
+  /* ============ CONTACT ============ */
+  .contact { text-align: center; padding: 110px 0; }
+  .contact h2 { margin: 0 auto; }
+  .contact p { margin: 20px auto 0; max-width: 46ch; color: var(--muted); }
+  .contact .btn { margin-top: 34px; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    border-top: 1px solid var(--line); padding: 30px 0;
+    font-size: .82rem; color: var(--muted);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+  }
+  .footer-logo {
+    height: 32px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    display: block;
+  }
+  @media (max-width: 600px) {
+    .footer-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  /* ============ REDUCED MOTION ============ */
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
 </head>
 <body>
-    
-    <!-- Header Start -->
-    <header class="header">
-        <a href="#" class="logo">Chad.<span class="span">dev</span></a>
 
-        <div class="menu-toggle" id="mobile-menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+<!-- ================= NAV ================= -->
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#" class="brand">Chad<span>.Dev</span></a>
+      <div class="nav-links">
+        <a href="#what">What I Do</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="#contact" class="cta">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-inner">
+    <span class="kicker"><span class="dot"></span> Available for projects · Remote · Philippines</span>
+    <h1 class="hero-title">From <em>Wireframe</em> to <em>Actual Website</em>.</h1>
+    <p class="lead">
+      I'm Chad — a frontend web developer who turns designs into fast,
+      responsive, mobile-ready websites and web apps. I am always seeking
+      new opportunities to learn, grow and enhance my skills continuously.
+    </p>
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-primary">View my work</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+    <div class="hero-tags">
+      <span class="tag">HTML</span><span class="tag">CSS</span>
+      <span class="tag">JavaScript</span><span class="tag">Bootstrap</span>
+      <span class="tag">PHP</span><span class="tag">Laravel</span>
+      <span class="tag">MySQL</span><span class="tag">WordPress</span>
+      <span class="tag">jQuery / AJAX</span><span class="tag">Figma</span>
+      <span class="tag">Photoshop</span><span class="tag">Tailwind</span>
+      <span class="tag">Owl Carousel</span><span class="tag">AOS</span>
+      <span class="tag">Salesforce</span><span class="tag">LWC</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHAT I DO ================= -->
+<section id="what">
+  <div class="wrap">
+    <p class="chapter">01 — What I Do</p>
+    <h2>Design. Code. Launch.</h2>
+    <p class="section-lead">
+      Hire me for the whole build. Design, frontend, backend and the database.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>UI / UX Design</h3>
+        <p>Wireframes, prototypes and design systems in Figma — tested against how people actually use the product.</p>
+        <span class="tag">Figma</span>
+      </div>
+      <div class="card">
+        <h3>Frontend Development</h3>
+        <p>Semantic, accessible markup with responsive layouts and smooth micro-interactions on every screen.</p>
+        <span class="tag">HTML · CSS · JS</span>
+      </div>
+      <div class="card">
+        <h3>Responsive &amp; Mobile-Ready</h3>
+        <p>Layouts that hold up from a 320px phone to an ultrawide monitor, without compromise.</p>
+        <span class="tag">Bootstrap</span>
+      </div>
+      <div class="card">
+        <h3>Backend &amp; Data</h3>
+        <p>PHP and Laravel apps backed by clean MySQL schemas, auth, and reporting queries.</p>
+        <span class="tag">PHP · Laravel · MySQL</span>
+      </div>
+      <div class="card">
+        <h3>CMS &amp; WordPress</h3>
+        <p>WordPress builds your team can actually edit — custom themes, no bloat, easy handover.</p>
+        <span class="tag">WordPress</span>
+      </div>
+      <div class="card">
+        <h3>Speed &amp; SEO</h3>
+        <p>Core Web Vitals tuning, image optimisation and structured metadata from day one.</p>
+        <span class="tag">Performance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section id="work">
+  <div class="wrap">
+    <p class="chapter">02 — Selected Work</p>
+    <h2>Things I've built.</h2>
+    <p class="section-lead">
+      Landing pages, WordPress builds, web designs, Laravel apps and systems.
+      Click any card to open the live site or repo.
+    </p>
+
+    <div class="work-grid">
+
+      <a class="work" href="https://chadskie02.github.io/" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/portfolio.png" class="img-thumbnail" alt="My Portfolio preview" />
         </div>
+        <div class="work-top"><h3>My Portfolio</h3><span class="num">01</span></div>
+        <p>A website where I showcase my skills and works.</p>
+        <div class="chips"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+      </a>
 
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-    <!-- Header End -->
-
-    <!-- Home Section Start -->
-    <section class="home" id="home">
-        <div class="home-content">
-            <h1>
-                <div class="typing-effect" id="name-container"></div>
-            </h1>
-            <h3>Frontend Web Developer</h3>
-            <p>My main focus is to expand my expertise in web application development and related technologies. 
-                I am always seeking new opportunities to learn, grow and enhance my skills continuously.</p>
-                <div class="btn-box">
-                    <a href="My-Freelance-Profile.pdf" target="_blank" role="button" data-aos="fade-right">Freelance Profile</a>
-                    <a href="Richard-Santos-CV-2026.pdf" target="_blank" role="button">Download My CV</a>
-                </div>
-                <ul class="social-media">
-                    <li><a href="https://www.facebook.com/chadskie02/" target="_blank"><img src="img/social-media/Facebook.png" class="social-width" width="7%"></a></li>
-                    <li><a href="https://www.linkedin.com/in/richard-santos-7b594118b/" target="_blank"><img src="img/social-media/LinkedIn.png" class="social-width" width="7%"></a></li>
-                    <li><a href="mailto:chadskie02@gmail.com" target="_blank"><img src="img/social-media/Google.png" class="social-width" width="7%"></a></li>
-                    <li><a href="https://twitter.com/richard77132470" target="_blank"><img src="img/social-media/Twitter.png" class="social-width" width="7%"></a></li>
-                    <li><a href="https://t.me/Chadskie02" target="_blank"><img src="img/social-media/Telegram.png" class="social-width" width="7%"></a></li>
-                </ul>                
+      <a class="work" href="https://www.figma.com/community/file/1290030150402607585/gaming-hub" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/web-design-gaming-hub 1.png" class="img-thumbnail" alt="Gaming Hub web design preview" />
         </div>
-    </section>
-    <!-- Home Section End -->
+        <div class="work-top"><h3>Gaming Hub — Figma</h3><span class="num">02</span></div>
+        <p>Web design for a gaming hub, built end to end in Figma.</p>
+        <div class="chips"><span class="tag">Figma</span></div>
+      </a>
 
-    <!-- wave start -->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#bdff00" fill-opacity="1" d="M0,160L16,165.3C32,171,64,181,96,165.3C128,149,160,107,192,117.3C224,128,256,192,288,229.3C320,267,352,277,384,277.3C416,277,448,267,480,234.7C512,203,544,149,576,154.7C608,160,640,224,672,234.7C704,245,736,203,768,181.3C800,160,832,160,864,138.7C896,117,928,75,960,80C992,85,1024,139,1056,176C1088,213,1120,235,1152,250.7C1184,267,1216,277,1248,245.3C1280,213,1312,139,1344,128C1376,117,1408,171,1424,197.3L1440,224L1440,320L1424,320C1408,320,1376,320,1344,320C1312,320,1280,320,1248,320C1216,320,1184,320,1152,320C1120,320,1088,320,1056,320C1024,320,992,320,960,320C928,320,896,320,864,320C832,320,800,320,768,320C736,320,704,320,672,320C640,320,608,320,576,320C544,320,512,320,480,320C448,320,416,320,384,320C352,320,320,320,288,320C256,320,224,320,192,320C160,320,128,320,96,320C64,320,32,320,16,320L0,320Z"></path></svg>
-    <!-- wave end -->
-
-
-
-    <!-- About Section Start -->
-    <section class="about" id="about">
-        <div class="about-content">
-            <h1 data-aos="fade-left" data-aos-easing="linear" data-aos-duration="2500">About</h1>
-            <div class="container">
-                <div class="card" data-aos="flip-up" data-aos-easing="linear" data-aos-duration="2500">
-                    <i class="fas fa-school hvr-reveal"></i>
-                    <h2>Education</h2>
-                    <p>City of Malabon University Bachelor of Science in Information Technology 2014-2018</p>
-                </div>
-                <div class="card" data-aos="flip-up" data-aos-easing="linear" data-aos-duration="2500">
-                    <i class="fas fa-code hvr-reveal"></i>
-                    <h2>Work Experience</h2>
-                    <p>Web Developer - Accenture Inc.</p>
-                    <p>Web Designer - Quantum X</p>
-                    <p>Web Developer – Online Thinkers Technology</p>
-                </div>
-                <div class="card" data-aos="flip-up" data-aos-easing="linear" data-aos-duration="2500">
-                    <i class="fas fa-music hvr-reveal"></i>
-                    <h2>Hobbies</h2>
-                    <p>Music, Games, Movies, Drawing, Web Development/Design, Blockchain & Adventure</p>
-                </div>
-            </div>
+      <a class="work" href="https://www.pascualph.com/" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/pascual2.png" class="img-thumbnail" alt="Pascual PH preview" />
         </div>
-    </section>
-    <!-- About Section End -->
+        <div class="work-top"><h3>Pascual PH</h3><span class="num">03</span></div>
+        <p>Responsive marketing site with animations and cross-browser compatibility.</p>
+        <div class="chips"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Bootstrap</span><span class="tag">SwiperJS</span></div>
+      </a>
 
-    <!-- Skills Section Start -->
-    <section class="skills" id="skills">
-        <div class="skills-content">
-            <h1 data-aos="fade-left" data-aos-easing="linear" data-aos-duration="2500">Tech Stack</h1>
-            <div class="container">
-                <div class="logos">
-                    <img src="img/skills/html5.png" alt="skill-icon" data-aos="fade-up">
-                    <img src="img/skills/css3.png" alt="skill-icon" data-aos="fade-up">
-                    <img src="img/skills/bootstrap.png" alt="skill-icon" data-aos="fade-up">
-                    <img src="img/skills/php.png" alt="skill-icon" data-aos="fade-up">
-                    <img src="img/skills/mysql.png" alt="skill-icon" data-aos="fade-up">
-                    <img src="img/skills/wordpress.png" alt="skill-icon" data-aos="fade-up">
-                    <img src="img/skills/joomla.png" alt="skill-icon" data-aos="fade-up">
-                    <img src="img/skills/photoshop.png" alt="skill-icon" data-aos="fade-up">
-                    <img src="img/skills/javascript.png" alt="skill-icon" data-aos="fade-up">
-                    <img src="img/skills/jquery.png" alt="skill-icon" data-aos="fade-up">
-                    <img src="img/skills/figma.png" alt="skill-icon" data-aos="fade-up">
-                    <img src="img/skills/Github.png" alt="skill-icon" data-aos="fade-up">
-                </div>
-            </div>
+      <a class="work" href="https://primal.com.ph/" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/primal.png" class="img-thumbnail" alt="Primal preview" />
         </div>
-    </section>
-    
-    <!-- Skills Section End -->
+        <div class="work-top"><h3>Primal</h3><span class="num">04</span></div>
+        <p>WordPress build with custom styling and responsive components.</p>
+        <div class="chips"><span class="tag">WordPress</span><span class="tag">PHP</span><span class="tag">Bootstrap</span></div>
+      </a>
 
-    <!-- Portfolio Section Start -->
-    <section class="portfolio" id="portfolio">
-        <div class="portfolio-content">
-            <h1 data-aos="fade-left" data-aos-easing="linear" data-aos-duration="2500">Portfolio</h1>
-            <div class="container">
-                <h2 data-aos="fade-right"><span>Swipe Me <i class="fas fa-arrow-right"></i></span></h2>
-                <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
-                    <swiper-slide>
-                        <img src="img/portfolio/web-design-gaming-hub 1.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://www.figma.com/community/file/1290030150402607585/gaming-hub" target="_blank">Web Design Using Figma - Gaming Hub</a></h2>
-                            <p><strong>Technology Used</strong>: Figma</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/pascual2.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://www.pascualph.com/" target="_blank">pascualph.com</a></h2>
-                            <p><strong>Technology Used</strong>: HTML, CSS, Javascript, Bootstrap, AOS library, Swiperjs, Responsive & Mobile Ready</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/portfolio.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://chadskie02.github.io/" target="_blank">chadskie02.github.io</a></h2>
-                            <p><strong>Technology Used</strong>: HTML, CSS, Javascript, AOS library, Swiperjs, Responsive & Mobile Ready</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/primal.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://primal.com.ph/" target="_blank">Primal</a></h2>
-                            <p><strong>Technology Used</strong>: WORDPRESS, PHP, HTML, CSS, Bootstrap, Javascript, Responsive & Mobile Ready</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/isd.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="http://www.isdphilippines.com/" target="_blank">ISD Philippines</a></h2>
-                            <p><strong>Technology Used</strong>: HTML, CSS, PHP, Javascript, Bootstrap, Laravel Responsive & Mobile Ready</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/womenininsurance.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://women.ibamag.com/" target="_blank">Women Ibamag Landing Page</a></h2>
-                            <p><strong>Technology Used</strong>: HTML, CSS, Responsive & Mobile Ready</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/unitedpolyresins.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://unitedpolyresins.com.ph/" target="_blank">United Polyresins</a></h2>
-                            <p><strong>Technology Used</strong>: WORDPRESS, PHP, HTML, CSS, Bootstrap, Javascript, Responsive & Mobile Ready</p>
-                        </div>
-                    </swiper-slide>                    
-                    <swiper-slide>
-                        <img src="img/portfolio/amit-darji.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://www.amitdarji.com/" target="_blank">Amit Darji</a></h2>
-                            <p><strong>Technology Used</strong>: PHP, HTML, CSS, Bootstrap, Javascript, Responsive & Mobile Ready</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/alloceans.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://alloma.com.ph/" target="_blank">Alloceans</a></h2>
-                            <p><strong>Technology Used</strong>: PHP, HTML, CSS, Bootstrap, Javascript, Responsive & Mobile Ready</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/cannabisibamag.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://cannabis.ibamag.com/" target="_blank">Cannabis Ibamag Landing Page</a></h2>
-                            <p><strong>Technology Used</strong>: HTML, CSS, Responsive & Mobile Ready</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/Inventory-system.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://github.com/Chadskie02/inventory_system" target="_blank">Inventory System</a></h2>
-                            <p><strong>Technology Used</strong>: PHP, MYSQL, HTML, CSS & Bootstrap</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/simple-qr-code-attendance-system.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://github.com/Chadskie02/Simple-Todo-List-Using-Laravel" target="_blank">Simple QR Code Attendance System</a></h2>
-                            <p><strong>Technology Used</strong>: PHP, AJAX, JQUERY, Javascript, MYSQL, HTML, CSS & Bootstrap</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/self-made-google-calendar.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://github.com/Chadskie02/Calendar_Scheduler2" target="_blank">Calendar Appointment</a></h2>
-                            <p><strong>Technology Used</strong>: PHP, MYSQL, HTML, CSS, Bootstrap, Jquery & Javascript</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/bns.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://chadskie02.github.io/bns/" target="_blank">Buy N Sell</a></h2>
-                            <p><strong>Technology Used</strong>: HTML, CSS, Javascript, AOS library, Swiperjs, Responsive & Mobile Ready</p>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <img src="img/portfolio/todo-list.png" class="img-thumbnail" alt="portfolio">
-                        <div class="section-title">
-                            <h2><a href="https://github.com/Chadskie02/simple-qr-code-attendance-system" target="_blank">Simple CRUD To-Do List Using Laravel & Jquery(Ajax)</a></h2>
-                            <p><strong>Technology Used</strong>: PHP, LARAVEL, AJAX, JQUERY, MYSQL, HTML, CSS & Bootstrap</p>
-                        </div>
-                    </swiper-slide>
-                </swiper-container>
-            </div>
+      <a class="work" href="http://www.isdphilippines.com/" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/isd.png" class="img-thumbnail" alt="ISD Philippines preview" />
         </div>
-    </section>
-    <!-- Portfolio Section End -->
+        <div class="work-top"><h3>ISD Philippines</h3><span class="num">05</span></div>
+        <p>Laravel site with dynamic content management and responsive design.</p>
+        <div class="chips"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">MySQL</span></div>
+      </a>
 
-    <!-- Contact Section Start -->
-    <section class="contact" id="contact">
-        <div class="contact-content">
-        <h1 data-aos="fade-left" data-aos-easing="linear" data-aos-duration="2500">Contact</h1>
-            <div class="container">
-                <div class="contact-icon-box">
-                    <span>
-                        <i class="fas fa-location-arrow hvr-reveal"></i>
-                    </span>
-                    <div class="contact-info">
-                        <h3>Location</h3>
-                        <p>Sta. Maria, Bulacan, Philippines</p>
-                    </div>
-                </div>
-                <div class="contact-icon-box">
-                    <span>
-                        <i class="fas fa-envelope-open-text hvr-reveal"></i>
-                    </span>
-                    <div class="contact-info">
-                        <h3>Mail</h3>
-                        <a href="mailto:chadskie02@gmail.com">chadskie02@gmail.com</a>
-                    </div>
-                </div>
-                <div class="contact-icon-box">
-                    <span>
-                        <i class="fas fa-phone hvr-reveal"></i>
-                    </span>
-                    <div class="contact-info">
-                        <h3>Mobile</h3>
-                        <p><a href="tel:09217229031">09217229031</a> / <a href="tel:09760838629">09760838629</a></p>
-                    </div>
-                </div>
-            </div>
+      <a class="work" href="https://unitedpolyresins.com.ph/" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/unitedpolyresins.png" class="img-thumbnail" alt="United Polyresins preview" />
         </div>
-    </section>
-    <!-- Contact Section End -->
+        <div class="work-top"><h3>United Polyresins</h3><span class="num">06</span></div>
+        <p>WordPress site, mobile-ready from day one.</p>
+        <div class="chips"><span class="tag">WordPress</span><span class="tag">PHP</span><span class="tag">JS</span></div>
+      </a>
 
-    <!-- Footer Section Start -->
-    <footer>
-        <div>
-            <a href="">
-                <img src="img/Logo.png" width="20%" height="20%" alt="">
-            </a> 
+      <a class="work hidden-work" href="https://women.ibamag.com/" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/womenininsurance.png" class="img-thumbnail" alt="Women Ibamag landing page preview" />
         </div>
-        <div>
-            <ul class="social-media">
-                <li><a href="https://www.facebook.com/chadskie02/" target="_blank"><img src="img/social-media/Facebook.png" class="social-width" width="7%"></a></li>
-                <li><a href="https://www.linkedin.com/in/richard-santos-7b594118b/" target="_blank"><img src="img/social-media/LinkedIn.png" class="social-width" width="7%"></a></li>
-                <li><a href="mailto:chadskie02@gmail.com" target="_blank"><img src="img/social-media/Google.png" class="social-width" width="7%"></a></li>
-                <li><a href="https://twitter.com/richard77132470" target="_blank"><img src="img/social-media/Twitter.png" class="social-width" width="7%"></a></li>
-                <li><a href="https://t.me/Chadskie02" target="_blank"><img src="img/social-media/Telegram.png" class="social-width" width="7%"></a></li>
-            </ul>    
+        <div class="work-top"><h3>Women Ibamag Landing Page</h3><span class="num">07</span></div>
+        <p>Responsive landing page, mobile-ready.</p>
+        <div class="chips"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+      </a>
+
+      <a class="work hidden-work" href="https://cannabis.ibamag.com/" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/cannabisibamag.png" class="img-thumbnail" alt="Cannabis Ibamag landing page preview" />
         </div>
-        <div>
-            <p>Made by Chadskie © 2024 </p>
+        <div class="work-top"><h3>Cannabis Ibamag Landing Page</h3><span class="num">08</span></div>
+        <p>Landing page focused on layout and responsiveness.</p>
+        <div class="chips"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+      </a>
+
+      <a class="work hidden-work" href="https://www.amitdarji.com/" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/amit-darji.png" class="img-thumbnail" alt="Amit Darji preview" />
         </div>
-    </footer>
-    <!-- Footer Section End -->
+        <div class="work-top"><h3>Amit Darji</h3><span class="num">09</span></div>
+        <p>Personal site with responsive layout and clean styling.</p>
+        <div class="chips"><span class="tag">PHP</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Bootstrap</span></div>
+      </a>
 
-    <!-- jQuery Swiper Min Js -->
-    <script src="js/swiper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-    <!-- Script Start -->
-    <script src="js/index.js"></script>
-    <script src="js/nav.js"></script>
+      <a class="work hidden-work" href="https://alloma.com.ph/" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/alloceans.png" class="img-thumbnail" alt="Alloceans preview" />
+        </div>
+        <div class="work-top"><h3>Alloceans</h3><span class="num">10</span></div>
+        <p>Responsive site with a custom content layout.</p>
+        <div class="chips"><span class="tag">PHP</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Bootstrap</span></div>
+      </a>
 
-    <!-- jQuery Aos Min Js -->
-    <script src="js/aos.min.js"></script>
+      <a class="work hidden-work" href="https://chadskie02.github.io/bns/" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/bns.png" class="img-thumbnail" alt="Buy N Sell preview" />
+        </div>
+        <div class="work-top"><h3>Buy N Sell</h3><span class="num">11</span></div>
+        <p>Marketplace-style landing page with animations and a slider.</p>
+        <div class="chips"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span class="tag">SwiperJS</span></div>
+      </a>
 
-    <script>
-        AOS.init({
-            duration: 3000,
-            once: true,
-        });
-    </script>
+      <a class="work hidden-work" href="https://github.com/Chadskie02/inventory_system" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/Inventory-system.png" class="img-thumbnail" alt="Inventory System preview" />
+        </div>
+        <div class="work-top"><h3>Inventory System</h3><span class="num">12</span></div>
+        <p>Stock tracking with products, orders and reporting on MySQL.</p>
+        <div class="chips"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
+      </a>
 
-    <script src="js/jquery.min.js"></script>
+      <a class="work hidden-work" href="https://github.com/Chadskie02/simple-qr-code-attendance-system" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/simple-qr-code-attendance-system.png" class="img-thumbnail" alt="QR Attendance preview" />
+        </div>
+        <div class="work-top"><h3>Attendance Using QR</h3><span class="num">13</span></div>
+        <p>QR check-in with live updates via AJAX and jQuery.</p>
+        <div class="chips"><span class="tag">PHP</span><span class="tag">AJAX</span><span class="tag">jQuery</span><span class="tag">MySQL</span></div>
+      </a>
 
-    <!-- jquery menu -->
-    <script>
-        $('.nav-item').click(function(){
-        $('li.active').removeClass('active');
-        $(this).addClass('active');
-        });
-    
-        $(document).ready(function(){       
-        var scroll_pos = 110;
-        $(document).scroll(function() { 
-            scroll_pos = $(this).scrollTop();
-            if(scroll_pos > 800) {
-                $('.hvr-reveal').css('color', '#BDFF00');
-            } else {
-                $('.hvr-reveal').css('color', '#3A3A3A');
-            }
-        });
+      <a class="work hidden-work" href="https://github.com/Chadskie02/Calendar_Scheduler2" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/self-made-google-calendar.png" class="img-thumbnail" alt="Calendar Appointment preview" />
+        </div>
+        <div class="work-top"><h3>Calendar Appointment</h3><span class="num">14</span></div>
+        <p>Booking calendar with date/time slots and a MySQL backend.</p>
+        <div class="chips"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">jQuery</span></div>
+      </a>
+
+      <a class="work hidden-work" href="https://github.com/Chadskie02/Simple-Todo-List-Using-Laravel" target="_blank" rel="noopener">
+        <div class="work-thumb">
+          <img src="img/portfolio/todo-list.png" class="img-thumbnail" alt="To-Do List preview" />
+        </div>
+        <div class="work-top"><h3>To-Do List</h3><span class="num">15</span></div>
+        <p>Laravel + jQuery CRUD app demonstrating clean MVC and AJAX.</p>
+        <div class="chips"><span class="tag">Laravel</span><span class="tag">AJAX</span><span class="tag">MySQL</span></div>
+      </a>
+
+    </div><!-- /.work-grid -->
+
+    <div class="work-more">
+      <button type="button" class="btn btn-ghost" id="seeMoreBtn" aria-expanded="false" aria-controls="work">
+        See more <span class="arrow">↓</span>
+      </button>
+    </div>
+
+  </div><!-- /.wrap -->
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <p class="chapter">03 — About Me</p>
+    <h2>Hi, I'm Chad.</h2>
+
+    <div class="about-grid">
+      <div>
+        <p>I'm a frontend web developer based in Bulacan, Philippines, with a background in web design and full-stack development. I like taking an idea from a Figma frame all the way to a live, responsive site.</p>
+        <p>I care about the details you feel but don't notice — a transition that lands just right, a layout that never breaks, a form that simply works.</p>
+        <p>Outside of code, I'm into music, games, movies and drawing.</p>
+      </div>
+      <div>
+        <div class="fact-list">
+          <div class="fact"><span>Focus</span><span>Frontend · Backend · Design</span></div>
+          <div class="fact"><span>Frontend</span><span>HTML · CSS · JS · Bootstrap</span></div>
+          <div class="fact"><span>Backend</span><span>PHP · Laravel · MySQL</span></div>
+          <div class="fact"><span>CMS</span><span>WordPress</span></div>
+          <div class="fact"><span>Design</span><span>Figma</span></div>
+          <div class="fact"><span>Location</span><span>Sta. Maria, Bulacan, PH</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="chapter">04 — Contact</p>
+    <h2>Let's build something.</h2>
+    <p>Open to freelance projects, collaborations and full-time roles. Remote-friendly, worldwide.</p>
+    <a href="mailto:richardsantos060297@gmail.com" class="btn btn-primary">richardsantos060297@gmail.com</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap footer-inner">
+    <img src="img/logo.png" alt="Chad.Dev logo" class="footer-logo" />
+    <span>© 2026 Chad.Dev portfolio.</span>
+  </div>
+</footer>
+
+<!-- ================= GSAP ================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  (function () {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* Hero title parallax (pin removed — it was causing the space-above glitch) */
+    gsap.to(".hero-title", {
+      y: -20,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "+=400",
+        scrub: true
+      }
     });
-    </script>
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-      (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/65c8fd5f0ff6374032cbca6e/1hmchrf6e';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-      })();
-    </script>
-    <!--End of Tawk.to Script-->
+
+    /* Section fade-up */
+    gsap.utils.toArray("section:not(.hero)").forEach((section) => {
+      gsap.from(section, {
+        opacity: 0,
+        y: 50,
+        duration: 0.9,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        }
+      });
+    });
+
+    /* Card stagger — only the visible cards animate on load */
+    gsap.utils.toArray(".cards, .work-grid").forEach((grid) => {
+      const visibleChildren = Array.from(grid.children).filter(
+        (el) =>
+          !el.classList.contains('hidden-work') &&
+          !el.classList.contains('work-more')
+      );
+      if (!visibleChildren.length) return;
+
+      gsap.from(visibleChildren, {
+        opacity: 0,
+        y: 40,
+        duration: 0.7,
+        ease: "power2.out",
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: grid,
+          start: "top 82%",
+          toggleActions: "play none none none"
+        }
+      });
+    });
+
+    /* Hero entrance */
+    gsap.from(".hero-tags .tag", {
+      opacity: 0,
+      y: 12,
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: 0.05,
+      delay: 0.4
+    });
+
+    gsap.from([".kicker", ".hero-cta"], {
+      opacity: 0,
+      y: 16,
+      duration: 0.7,
+      ease: "power2.out",
+      stagger: 0.15,
+      delay: 0.2
+    });
+  })();
+
+  /* ============ SEE MORE / SEE LESS ============ */
+  (function () {
+    const btn = document.getElementById('seeMoreBtn');
+    const grid = document.querySelector('.work-grid');
+    if (!btn || !grid) return;
+
+    btn.addEventListener('click', () => {
+      const isExpanded = grid.classList.toggle('expanded');
+      btn.setAttribute('aria-expanded', String(isExpanded));
+
+      // Swap the label text
+      btn.innerHTML = isExpanded
+        ? 'See less <span class="arrow">↑</span>'
+        : 'See more <span class="arrow">↓</span>';
+
+      // After expanding, tell ScrollTrigger to recalc
+      if (window.ScrollTrigger) {
+        ScrollTrigger.refresh();
+      }
+
+      // Optional: scroll to the work section top when collapsing
+      if (!isExpanded) {
+        document.getElementById('work').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  })();
+</script>
 </body>
 </html>
